@@ -1,5 +1,5 @@
 -- nil ! Not in List / Não existe ou igual a nada.
-a = 1
+a = nil -- Python == None
 
 print(a)
 
