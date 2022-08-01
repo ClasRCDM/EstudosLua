@@ -13,7 +13,10 @@ print(s1..' - '..s2..' - '..s3..' - '..s4)
 linha()
 
 -- Complexas
-s5 = [[Olá!!, MUNDOOO :)]]
+s5 = [[
+Olá!!, 
+MUNDOOO :)
+]]
 print(s5)
 linha()
 --
