@@ -1,5 +1,5 @@
 -- Modulos --
-local stringUtils = {}
+local stringUtils = {} -- nome + Utils
 
 function stringUtils.split(texto, sep)
 		-- Linha de cabeçalho
