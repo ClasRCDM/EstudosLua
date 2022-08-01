@@ -86,5 +86,4 @@ do
 	local nomeArqResultado = string.gsub('Tabela_de_Moedas', '%.%w+$', '.txt')
 	local arqResultado = io.open(nomeArqResultado, 'w')
 	arqResultado:write(toString(resultado))
-
 end
