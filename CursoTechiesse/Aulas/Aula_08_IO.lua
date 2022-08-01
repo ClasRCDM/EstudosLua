@@ -25,4 +25,3 @@ do
 	arqSaida:write('!' .. conteudo .. '!')
 	arqSaida:close()
 end
-
