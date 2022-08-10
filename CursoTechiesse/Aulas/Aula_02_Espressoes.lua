@@ -4,6 +4,7 @@ Operadores Aritméticos --
  - == Subtração = 2-4, 4-r
  * == Multiplicação = 4 * 2
  / == Divisão = 5 / 5
+ % == Aplica-se inteiros
  - == Negação = -b, -6
  ^ == Exponenciação = x^2, 3^0.5
 ]]
