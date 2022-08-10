@@ -1,11 +1,11 @@
--- Exercício -> Algoritmo dobro, Triplo, Raiz quadrada. --
+-- Exercício 5 -> Algoritmo dobro, Triplo, Raiz quadrada. --
 do
-    m = require('printf')
+    local m = require('printf')
 
     io.write('Digite um número: '); local n = io.read('*line')
-    d = n * 2
-    t = n * 3
-    r = n ^ (1/2)
+    local d = n * 2
+    local t = n * 3
+    local r = n ^ (1/2)
     m.printf([[
     O dobro de %s vale %s.
     O trilpo de %s vale %s.

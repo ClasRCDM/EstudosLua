@@ -1,4 +1,4 @@
--- Exercício 5 -> --
+-- Exercício 4 -> Sucessor e Antecessor --
 do
     local m = require('printf')
 
