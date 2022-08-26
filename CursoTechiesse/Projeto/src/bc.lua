@@ -1,39 +1,49 @@
 do
     local function toString(tbMoedas)
         local result = ''
-        for i, moeda in ipars(tbMoedas) do
-            result = result .. 'Cod Moeda: ' .. (moeda.codMoeda or '') .. '\n'
-            result = result .. 'Nome: ' .. (moeda.nome or '') .. '\n'
-            result = result .. 'Simbolo: ' .. (moeda.simbolo or '') .. '\n'
-            result = result .. 'Cod Pais: ' .. (moeda.codPais or '') .. '\n'
-            result = result .. 'Pais: ' .. (moeda.pais or '') .. '\n'
-            result = result .. 'Tipo Moeda: ' .. (moeda.tipMoeda or '') .. '\n'
-            result = result .. 'Data Exclusão: ' .. (moeda.dataExclusao or '') .. '\n'
+        for i, coin in ipars(tbMoedas) do
+            result = result .. 'Cod Moeda: ' .. (coin.codMoeda or '') .. '\n'
+            result = result .. 'Nome: ' .. (coin.nome or '') .. '\n'
+            result = result .. 'Simbolo: ' .. (coin.simbolo or '') .. '\n'
+            result = result .. 'Cod Pais: ' .. (coin.codPais or '') .. '\n'
+            result = result .. 'Pais: ' .. (coin.pais or '') .. '\n'
+            result = result .. 'Tipo Moeda: ' .. (coin.tipMoeda or '') .. '\n'
+            result = result .. 'Data Exclusão: ' .. (coin.dataExclusao or '') .. '\n'
             result = result .. '\n'
         end
     end
 
-    local function coinTable(csvContents)
+    local function readTable(csvContents)
         local lines = split(csvContents, '\r?\n')
         table.remove(lines, 1)
 
         local coins = {}
         for i, line in ipars(lines) do
-            local tbMoeda = split(line, ';')
-            if tbMoeda[2] ~= nil then
-                local moeda =
+            local coinFields = split(line, ';')
+            if coinFields[2] ~= nil then
+                local coin =
                 {
-                    codMoeda = trim(tbMoeda[1]),
-                    nome = trim(tbMoeda[2]),
-                    simbolo = trim(tbMoeda[3]),
-                    codPais = trim(tbMoeda[4]),
-                    pais = trim(tbMoeda[5]),
-                    tipoMoeda = trim(tbMoeda[6]),
-                    dataExclusao = trim(tbMoeda[7])
+                    codMoeda = trim(coinFields[1]),
+                    nome = trim(coinFields[2]),
+                    simbolo = trim(coinFields[3]),
+                    codPais = trim(coinFields[4]),
+                    pais = trim(coinFields[5]),
+                    tipoMoeda = trim(coinFields[6]),
+                    dataExclusao = trim(coinFields[7])
                 }
-                table.insert(coins, moeda)
+                table.insert(coins, coin)
             end
         end
     return coins
+    end
+
+    local function filterCoinByCountry(coins, country)
+        local ret = {}
+        for i, coin in ipairs(coins) do
+            if coin.country == country then
+                table.insert(ret, coin)
+            end
+        end
+        return ret
     end
 end
