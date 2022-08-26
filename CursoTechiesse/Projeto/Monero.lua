@@ -18,7 +18,9 @@ do
                 --pass
             end
 
-            local coins = coinTable(contents)
+            local coins = readTable(contents)
+            local filteredCoins = filterCoinByCountry(coins, string.upper(countryName))
+            local validCoins = filterValidCoins(filteredCoins)
         end
     end
 

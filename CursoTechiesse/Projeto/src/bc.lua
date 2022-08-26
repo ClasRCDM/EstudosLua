@@ -46,4 +46,15 @@ do
         end
         return ret
     end
+
+    local function filterValidCoins(coins)
+        local ret = {}
+        for i, coin in ipairs(coins) do
+            if #coin.dataExclusao == 0 then
+                table.insert(ret, coins)
+            end
+        end
+        return ret
+    end
+
 end
