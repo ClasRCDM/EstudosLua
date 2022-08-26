@@ -1,4 +1,12 @@
 do
+    local genCoinTableFileName(day) return 'M'.. day ..'.csv' end
+
+    local function downloadCoinTable(day, destDir)
+        local fileName = genCoinTableFileName(day)
+        local url = COIN_TABLE_BASE_URL.. '/' ..fileName
+        os.exec(CURL_EXEC.. '-o ' ..destDir .. fileName.. '/' ..url)
+    end
+
     local function toString(tbMoedas)
         local result = ''
         for i, coin in ipars(tbMoedas) do

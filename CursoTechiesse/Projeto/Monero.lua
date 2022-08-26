@@ -5,6 +5,7 @@ do
     require "src.bc"
     require "src.util"
 
+    CURL_EXEC = [[C:\Users\Administrator\Documents\Programação\Estudos\EstudosLua\CursoTechiesse\Projeto\bin\curl]]
     COIN_DIR = 'moedas'
     local function main(...)
         local args = {...}
@@ -12,10 +13,10 @@ do
             print('Busca de Moedas...')
 
             local countryName = args[2]
-            local inputFileName = COIN_DIR.. '\\' ..'M' .. os.date('%Y%m¨%d') .. '.csv'
+            local inputFileName = COIN_DIR.. '\\' .. genCoinTableFileName(day)
             local contents = readTextFromFile(inputFileName)
             if contents == nil then
-                --pass
+                downloadCoinTable(day, CORL_EXEC)
             end
 
             local coins = readTable(contents)
