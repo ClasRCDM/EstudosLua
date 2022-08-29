@@ -1,13 +1,27 @@
 do
-    local genCoinTableFileName(day) return 'M'.. day ..'.csv' end
+    function genCoinTableFileName(day) return 'M'.. day ..'.csv' end
 
-    local function downloadCoinTable(day, destDir)
-        local fileName = genCoinTableFileName(day)
-        local url = COIN_TABLE_BASE_URL.. '/' ..fileName
-        os.exec(CURL_EXEC.. '-o ' ..destDir .. fileName.. '/' ..url)
+    function genQuotationTableFileName(day) return day .. '.csv' end
+
+    function downloadFile(urls, url, destDir, fileName)
+        fileName = FileName or string.match(url, '/([%w.]+)$')
+        local downloadCommand = string.format('%s -o %s\\%s %s  2>nul', urls.curl, destDir, fileName, url)
+        os.execute(downloadCommand)
     end
 
-    local function toString(tbMoedas)
+    function downloadCoinTable(day, destDir, urls)
+        local fileName = genCoinTableFileName(day)
+        local url = urls.coin.. '/' ..fileName
+        downloadFile(urls, url, destDir)
+    end
+
+    function downloadCoinTable(day, destDir, urls)
+        local fileName = genQuotationTableFileName(day)
+        local url = urls.coin.. '/' ..fileName
+        downloadFile(urls, url, destDir)
+    end
+
+    function toString(tbMoedas)
         local result = ''
         for i, coin in ipars(tbMoedas) do
             result = result .. 'Cod Moeda: ' .. (coin.codMoeda or '') .. '\n'
@@ -21,31 +35,22 @@ do
         end
     end
 
-    local function readTable(csvContents)
-        local lines = split(csvContents, '\r?\n')
-        table.remove(lines, 1)
+    function readCoins(csvContents)
+        local lines = split(csvContents, "\r?\n")
+        table.remove(lines, 1) -- Removendo linha de cabeçalho
 
         local coins = {}
-        for i, line in ipars(lines) do
-            local coinFields = split(line, ';')
+        for i, line in ipairs(lines) do
+            local coinFields = split(line, ";")
             if coinFields[2] ~= nil then
-                local coin =
-                {
-                    codMoeda = trim(coinFields[1]),
-                    nome = trim(coinFields[2]),
-                    simbolo = trim(coinFields[3]),
-                    codPais = trim(coinFields[4]),
-                    pais = trim(coinFields[5]),
-                    tipoMoeda = trim(coinFields[6]),
-                    dataExclusao = trim(coinFields[7])
-                }
+                local coin = Coin.new(unpack(coinFields))
                 table.insert(coins, coin)
             end
         end
-    return coins
+        return coins
     end
 
-    local function filterCoinByCountry(coins, country)
+    function filterCoinByCountry(coins, country)
         local ret = {}
         for i, coin in ipairs(coins) do
             if coin.country == country then
@@ -55,7 +60,7 @@ do
         return ret
     end
 
-    local function filterValidCoins(coins)
+    function filterValidCoins(coins)
         local ret = {}
         for i, coin in ipairs(coins) do
             if #coin.dataExclusao == 0 then
@@ -64,5 +69,4 @@ do
         end
         return ret
     end
-
 end

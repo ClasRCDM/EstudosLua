@@ -1,5 +1,5 @@
 do
-    local function readTextFromFile(FileName)
+    function readTextFromFile(FileName)
         local file = io.open(FileName, 'r')
         if file == nil then
             return nil, 'Não foi possivel abrir o arquivo ' .. FileName
@@ -10,7 +10,7 @@ do
         return contents
     end
 
-    local function saveTextToFile(text, FileName)
+    function saveTextToFile(text, FileName)
         local file = io.open(FileName, 'w')
         local res = file:write(text)
         file:close()
