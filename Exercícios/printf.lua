@@ -1,5 +1,3 @@
--- Função do format --
-f = {}
-function f.printf(...) print(string.format(...)) end
-
-return f
+do -- Função do format --
+    function printf(...) print(string.format(...)) end
+end
