@@ -5,7 +5,7 @@ do
     print('Digite um número para ver sua tabuada: ') local tab = io.read('*line')
     print('-----------')
     for tabuada=1, 10 do
-        result = tabuada * tab
+        local result = tabuada * tab
         m.printf('%s x %s = %s',
                   tab, tabuada, result)
     end

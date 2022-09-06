@@ -1,5 +1,5 @@
 do -- Aluguel de carros --
-    require 'printf'
+    local printf = require 'printf'
     -- Dias alugados do carro
     io.write('Quantos dias alugados? ') local diasAlug = io.read('*line')
 

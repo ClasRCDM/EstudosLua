@@ -5,7 +5,7 @@ do
     print('Uma dinstância em metros: ') local met = io.read('*line')
     m.printf('A medida de %s corresponde a:', met)
 
-    medida = [[
+    local medida = [[
     %s km
     %s hm
     %s dam

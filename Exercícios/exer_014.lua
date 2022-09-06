@@ -1,5 +1,5 @@
 do -- Conversor de Temperaturas --
-    require 'printf'
+    local printf = require 'printf'
     -- Temperatura em gruas °C
     io.write('Informe a temperatura em °C: ') local temp = io.read('*line')
 

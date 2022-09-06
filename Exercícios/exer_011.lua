@@ -1,5 +1,5 @@
 do -- Pintando Parede --
-    require 'printf'
+    local printf = require 'printf'
     -- Largura da parede
     io.write('Largura da parede: ') local larpar = io.read('*line')
     -- Altura da parede

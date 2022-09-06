@@ -1,3 +1,5 @@
 do -- Função do format --
-    function printf(...) print(string.format(...)) end
+    local function printf(...) print(string.format(...)) end
+
+    return printf
 end

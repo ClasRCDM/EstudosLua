@@ -1,5 +1,5 @@
 do -- Calculando descontos --
-    require 'printf'
+    local printf = require 'printf'
     -- Preço do produto
     io.write('Qual o preço do produto? R$') local produto = io.read('*line')
 

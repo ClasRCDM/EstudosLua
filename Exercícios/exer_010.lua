@@ -5,10 +5,10 @@ do
     print('Largura da parede:') local l = io.read('*line')
     print('Altura da parede:') local a = io.read('*line')
 
-    area = l * a
-    tinta = area / 2
+    local area = l * a
+    local tinta = area / 2
 
-    txt =[[
+    local txt =[[
 Sua parede tem a dimensão de %s x %s e sua área é de %sm².
 Para pintar essa parede, vocé precisará de %sl de tinta.
     ]]

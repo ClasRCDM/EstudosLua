@@ -1,5 +1,5 @@
 do -- Reajustes salarial --
-    require 'printf'
+    local printf = require 'printf'
     -- Salário do funcionário
     io.write('Qual o salario do funcionario: R$') local salario = io.read('*line')
 
