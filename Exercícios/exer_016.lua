@@ -3,6 +3,6 @@ do -- Quebrando um número
     -- Número flutuantes
     io.write('Digite um valor: ') local num = io.read("*line")
 
-    -- Convertendo para int
-    printf('O valor digitado foi %s e a sua porcao interia e %s', num, math.floor(num))
+    -- Result
+    printf('O valor digitado foi %s e a sua porcao interia e %.0f', num, num)
 end
